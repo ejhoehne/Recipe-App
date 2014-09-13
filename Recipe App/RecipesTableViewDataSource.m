@@ -1,0 +1,29 @@
+//
+//  RecipesTableViewDataSource.m
+//  Recipe App
+//
+//  Created by Emily Hoehne on 9/12/14.
+//  Copyright (c) 2014 DevMountain. All rights reserved.
+//
+
+#import "RecipesTableViewDataSource.h"
+#import "RARecipes.h"
+static NSString * const cellIdentifier = @"identifier";
+
+@implementation RecipesTableViewDataSource
+
+-(void)registerTableview:(UITableView *)tableView {
+    [tableView registerClass:[UITableView class] forCellReuseIdentifier:cellIdentifier];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [RARecipes count];
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    cell.textLabel.text= [RARecipes titleAtIndex:indexPath.row];
+    return cell;
+}
+
+
+@end
