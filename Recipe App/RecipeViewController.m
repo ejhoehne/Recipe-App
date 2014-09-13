@@ -8,6 +8,7 @@
 
 #import "RecipeViewController.h"
 #import "RecipesTableViewDataSource.h"
+#import "RecipeDetailViewController.h"
 
 @interface RecipeViewController ()
 
@@ -31,11 +32,26 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     self.dataSource = [RecipesTableViewDataSource new];
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.frame];
-    [self.view addSubview:self.tableView];
-    [self.dataSource registerTableview:self.tableView];
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     self.tableView.dataSource = self.dataSource;
+    [self.view addSubview:self.tableView];
+     self.tableView.delegate = self;
+
+    [self.dataSource registerTableview:self.tableView];
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    RecipeDetailViewController *dvController = [RecipeDetailViewController new];
+
+    //The NSIndexPath property is a property of the dvController, so set that property equal to indexPath.
+    dvController.selectedIndexPath = indexPath;
+    [self.navigationController pushViewController:dvController animated:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning

@@ -13,7 +13,7 @@ static NSString * const cellIdentifier = @"identifier";
 @implementation RecipesTableViewDataSource
 
 -(void)registerTableview:(UITableView *)tableView {
-    [tableView registerClass:[UITableView class] forCellReuseIdentifier:cellIdentifier];
+    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellIdentifier];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -25,5 +25,9 @@ static NSString * const cellIdentifier = @"identifier";
     return cell;
 }
 
+//This adds a section header
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"Recipes";
+}
 
 @end
