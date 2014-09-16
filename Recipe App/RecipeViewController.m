@@ -49,7 +49,7 @@
     RecipeDetailViewController *dvController = [RecipeDetailViewController new];
 
     //The NSIndexPath property is a property of the dvController, so set that property equal to indexPath.
-    dvController.selectedIndexPath = indexPath;
+//    dvController.recipeIndex = self.indexPath;
     [self.navigationController pushViewController:dvController animated:YES];
     
 }

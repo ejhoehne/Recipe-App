@@ -11,6 +11,8 @@
 @interface RecipeDetailViewController : UIViewController
 
 //To set up the path to the data, create a new property of NSIndexPath here. 
-@property (nonatomic, strong) NSIndexPath *selectedIndexPath;
+//@property (nonatomic, strong) NSIndexPath *selectedIndexPath;
+
+@property (nonatomic, assign) NSInteger recipeIndex;
 
 @end
